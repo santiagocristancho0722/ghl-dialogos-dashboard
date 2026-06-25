@@ -108,6 +108,8 @@
   .progress-sub{font-size:11px;color:var(--gray);margin-left:6px;}
   .progress-track{height:14px;background:#eef0f3;border-radius:99px;overflow:hidden;position:relative;}
   .progress-fill{height:100%;border-radius:99px;transition:width .5s ease;background:linear-gradient(90deg,var(--mid),var(--blue));}
+  .progress-fill.chatbot{background:linear-gradient(90deg,#b45309,#f59e0b);}
+  .progress-block + .progress-block{margin-top:14px;}
   .progress-segments{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
   .progress-seg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray);}
   .progress-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
@@ -186,9 +188,8 @@
       <th onclick="sortTable(6)">¿Modificaciones? <span class="si">⇅</span></th>
       <th>Descripción de modificaciones</th>
       <th onclick="sortTable(8)">Fecha actualiz. chatbot <span class="si">⇅</span></th>
-      <th>Actualizado por</th>
       <th>Comentarios</th>
-      <th onclick="sortTable(11)">Estado <span class="si">⇅</span></th>
+      <th onclick="sortTable(10)">Estado <span class="si">⇅</span></th>
     </tr>
   </thead>
   <tbody id="tableBody"></tbody>
@@ -206,7 +207,7 @@ const allData = [
   {ciclo:"Jun-26",hotel:"Biohotel",contacto:"Maria Del Pilar Narvaez",correo:"pilar.narvaez@ghlhoteles.com",envio:"02/06/2026",respuesta:"",mod:"—",desc:"",fechaChatbot:"",actualizadoPor:"",comentarios:"",estado:"Sin respuesta",mods:[]},
   {ciclo:"Jun-26",hotel:"Bioxury",contacto:"Andrea Rojas",correo:"catalina.rojas@ghlhoteles.com",envio:"02/06/2026",respuesta:"",mod:"—",desc:"",fechaChatbot:"",actualizadoPor:"",comentarios:"",estado:"Sin respuesta",mods:[]},
   {ciclo:"Jun-26",hotel:"Geotel Antofagasta",contacto:"Nelson Uriel Perez Ortiz",correo:"nelson.perez@ghlhoteles.com",envio:"02/06/2026",respuesta:"",mod:"—",desc:"",fechaChatbot:"",actualizadoPor:"",comentarios:"",estado:"Sin respuesta",mods:[]},
-  {ciclo:"Jun-26",hotel:"Geotel Calama",contacto:"Katherine Mora",correo:"katherine.mora@ghlhoteles.com",envio:"02/06/2026",respuesta:"04/06/2026",mod:"Sí",desc:"8 diálogos modificados: contacto reservas/eventos, modificación/cancelación reserva, pagos, check-out, desayuno, parking",fechaChatbot:"25/06/2026",actualizadoPor:"Santiago Cristancho",comentarios:"",estado:"Actualizado",
+  {ciclo:"Jun-26",hotel:"Geotel Calama",contacto:"Katherine Mora",correo:"katherine.mora@ghlhoteles.com",envio:"02/06/2026",respuesta:"04/06/2026",mod:"Sí",desc:"8 diálogos modificados: contacto reservas/eventos, modificación/cancelación reserva, pagos, check-out, desayuno, parking",fechaChatbot:"23/06/2026",actualizadoPor:"Santiago Cristancho",comentarios:"",estado:"Actualizado",
     mods:[
       {dialogo:"16-02",nombre:"Contact staff — Reserva",campo:"WhatsApp/celular",antes:"No tenía WhatsApp",despues:"+56 931909316 / +56 996795687"},
       {dialogo:"16-02",nombre:"Contact staff — Eventos",campo:"Email / WhatsApp",antes:"ventascalama@geotel.cl, sin WhatsApp",despues:"pablo.arancibia@ghlhoteles.com / WhatsApp +56 942830425"},
@@ -219,8 +220,8 @@ const allData = [
       {dialogo:"13-01",nombre:"Parking",campo:"Altura máxima / bicicletas / mascotas",antes:"Altura 600cm; sin parqueo bicis; sin mención de mascotas",despues:"Altura 2.6 mts; parqueo bicis al aire libre; no se aceptan mascotas"},
     ]},
   {ciclo:"Jun-26",hotel:"GHL Collection 93",contacto:"James Mendoza",correo:"james.mendoza@ghlhoteles.com",envio:"02/06/2026",respuesta:"",mod:"—",desc:"",fechaChatbot:"",actualizadoPor:"",comentarios:"",estado:"Sin respuesta",mods:[]},
-  {ciclo:"Jun-26",hotel:"Armeria Real",contacto:"Saray Estrada",correo:"Saray.estrada@ghlhoteles.com",envio:"02/06/2026",respuesta:"04/06/2026",mod:"Sí",desc:"Actualización diálogo 10-09",fechaChatbot:"25/06/2026",actualizadoPor:"Santiago Cristancho",comentarios:"",estado:"Actualizado",mods:[{dialogo:"10-09",nombre:"—",campo:"Disponibilidad",antes:"Versión anterior",despues:"Disponible de manera gratuita"}]},
-  {ciclo:"Jun-26",hotel:"GHL Collection Hamilton",contacto:"Wilson Bohorquez",correo:"andres.bohorquez@ghlhoteles.com",envio:"02/06/2026",respuesta:"03/06/2026",mod:"Sí",desc:"6 diálogos modificados: early check-in, check-out tardío, desayuno, room service, transfer privado, quejas",fechaChatbot:"25/06/2026",actualizadoPor:"Santiago Cristancho",comentarios:"",estado:"Actualizado",
+  {ciclo:"Jun-26",hotel:"Armeria Real",contacto:"Saray Estrada",correo:"Saray.estrada@ghlhoteles.com",envio:"02/06/2026",respuesta:"04/06/2026",mod:"Sí",desc:"Actualización diálogo 10-09",fechaChatbot:"23/06/2026",actualizadoPor:"Santiago Cristancho",comentarios:"",estado:"Actualizado",mods:[{dialogo:"10-09",nombre:"—",campo:"Disponibilidad",antes:"Versión anterior",despues:"Disponible de manera gratuita"}]},
+  {ciclo:"Jun-26",hotel:"GHL Collection Hamilton",contacto:"Wilson Bohorquez",correo:"andres.bohorquez@ghlhoteles.com",envio:"02/06/2026",respuesta:"03/06/2026",mod:"Sí",desc:"6 diálogos modificados: early check-in, check-out tardío, desayuno, room service, transfer privado, quejas",fechaChatbot:"23/06/2026",actualizadoPor:"Santiago Cristancho",comentarios:"",estado:"Actualizado",
     mods:[
       {dialogo:"11-01",nombre:"Check-in time",campo:"Precio early check-in",antes:"100000 COP/habitación",despues:"$150.000 COP/habitación"},
       {dialogo:"11-11",nombre:"Check-out time",campo:"Precio check-out tardío",antes:"80000 COP/habitación",despues:"$150.000 COP/habitación"},
@@ -571,7 +572,7 @@ function renderTable(data) {
   const tbody = document.getElementById('tableBody');
   tbody.innerHTML = '';
   if(!data.length) {
-    tbody.innerHTML = `<tr><td colspan="12"><div class="empty-state"><div class="icon">🔍</div>Sin resultados para los filtros seleccionados.</div></td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="11"><div class="empty-state"><div class="icon">🔍</div>Sin resultados para los filtros seleccionados.</div></td></tr>`;
     document.getElementById('countLabel').textContent = '0 registros';
     renderKPIs([]);
     return;
@@ -588,7 +589,6 @@ function renderTable(data) {
       <td class="center">${modSpan(h.mod)}</td>
       <td class="desc">${h.desc||'<span style="color:#ccc">—</span>'}</td>
       <td class="date">${h.fechaChatbot||'<span style="color:#ccc">—</span>'}</td>
-      <td class="contact">${h.actualizadoPor||'<span style="color:#ccc">—</span>'}</td>
       <td class="desc">${h.comentarios||'<span style="color:#ccc">—</span>'}</td>
       <td>${statusBadge(h.estado)}</td>
     `;
@@ -597,7 +597,7 @@ function renderTable(data) {
     const detailRow = document.createElement('tr');
     detailRow.className = 'detail-row';
     detailRow.id = `detail-${i}`;
-    detailRow.innerHTML = `<td colspan="12"><div class="detail-inner">
+    detailRow.innerHTML = `<td colspan="11"><div class="detail-inner">
       <h4>Detalle de modificaciones — ${h.hotel} &nbsp;|&nbsp; ${h.ciclo}</h4>
       ${buildModTable(h.mods)}
     </div></td>`;
@@ -643,7 +643,10 @@ function renderProgress(data) {
   const conMod = data.filter(h=>h.mod==="Sí").length;
   const sinMod = data.filter(h=>h.mod==="No").length;
   const sinResp = data.filter(h=>!h.respuesta).length;
+  const actualizados = data.filter(h=>h.estado==="Actualizado").length;
   const pct = total ? Math.round(respondieron/total*100) : 0;
+  // % de actualización en chatbot sobre los hoteles que reportaron modificaciones
+  const pctChatbot = conMod ? Math.round(actualizados/conMod*100) : 0;
 
   // Per-ciclo breakdown (only when "Todos" or multiple ciclos visible)
   const ciclosEnVista = [...new Set(data.map(d=>d.ciclo))].sort();
@@ -666,15 +669,27 @@ function renderProgress(data) {
   }
 
   document.getElementById('progressWrap').innerHTML = `
-    <div class="progress-header">
-      <div class="progress-label">% de cumplimiento — hoteles que respondieron el correo</div>
-      <div><span class="progress-pct">${pct}%</span><span class="progress-sub">${respondieron} de ${total} hoteles</span></div>
+    <div class="progress-block">
+      <div class="progress-header">
+        <div class="progress-label">% de cumplimiento — hoteles que respondieron el correo</div>
+        <div><span class="progress-pct">${pct}%</span><span class="progress-sub">${respondieron} de ${total} hoteles</span></div>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progFill" style="width:0%"></div>
+      </div>
     </div>
-    <div class="progress-track">
-      <div class="progress-fill" id="progFill" style="width:0%"></div>
+    <div class="progress-block">
+      <div class="progress-header">
+        <div class="progress-label">% de cumplimiento — actualizados en el chatbot</div>
+        <div><span class="progress-pct" style="color:#92400E">${pctChatbot}%</span><span class="progress-sub">${actualizados} de ${conMod} con modificaciones</span></div>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill chatbot" id="progFillChatbot" style="width:0%"></div>
+      </div>
     </div>
     <div class="progress-segments">
       <div class="progress-seg"><div class="progress-dot" style="background:#276221"></div>Con modificaciones: <strong>${conMod}</strong></div>
+      <div class="progress-seg"><div class="progress-dot" style="background:#856404"></div>Actualizados en chatbot: <strong>${actualizados}</strong></div>
       <div class="progress-seg"><div class="progress-dot" style="background:#2a5e95"></div>Sin modificaciones: <strong>${sinMod}</strong></div>
       <div class="progress-seg"><div class="progress-dot" style="background:#e5e7eb"></div>Sin respuesta: <strong>${sinResp}</strong></div>
     </div>
@@ -683,6 +698,8 @@ function renderProgress(data) {
   requestAnimationFrame(()=>{
     const f = document.getElementById('progFill');
     if(f) f.style.width = pct+'%';
+    const fc = document.getElementById('progFillChatbot');
+    if(fc) fc.style.width = pctChatbot+'%';
   });
 }
 
@@ -696,7 +713,7 @@ function updateHeader(data) {
 function applyFilters() {
   const data = getFiltered();
   if(sortCol >= 0) {
-    const keys=[null,'hotel','contacto','ciclo','envio','respuesta','mod','desc','fechaChatbot','actualizadoPor','comentarios','estado'];
+    const keys=[null,'hotel','contacto','ciclo','envio','respuesta','mod','desc','fechaChatbot','comentarios','estado'];
     const k=keys[sortCol];
     data.sort((a,b)=>sortAsc?(a[k]||'').localeCompare(b[k]||''):(b[k]||'').localeCompare(a[k]||''));
   }
@@ -716,7 +733,7 @@ function renderLastUpdate() {
   };
   let best = null;
   allData.forEach(d => {
-    const dt = parse(d.respuesta);
+    const dt = parse(d.fechaChatbot);
     if (dt && (!best || dt > best)) best = dt;
   });
   const el = document.getElementById('headerUpdatedDate');
